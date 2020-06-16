@@ -2,10 +2,10 @@ const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  // mode: "development",
-  mode: "production",
+  mode: "development",
 
   entry: { main: "./src/index.js" },
 
@@ -27,11 +27,24 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: "babel-loader",
+        options: {
+          presets: [
+            ["@babel/preset-env", { useBuiltIns: "entry", corejs: "3.6" }],
+          ],
+          plugins: ["@babel/plugin-proposal-class-properties"],
+        },
       },
       {
         test: /\.(sass|scss)$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-        // use: ["style-loader", "css-loader", "sass-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          { loader: "css-loader", options: { importLoaders: 1 } },
+          {
+            loader: "postcss-loader",
+            options: { plugins: [require("autoprefixer")] },
+          },
+          "sass-loader",
+        ],
       },
     ],
   },
