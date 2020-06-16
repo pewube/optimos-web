@@ -1,0 +1,44 @@
+@mixin article-header() {
+  padding: $main-spacing * 1.5 $main-spacing;
+  font-size: 1.2rem;
+  color: #fff;
+  text-align: left;
+  background-color: $primary-green;
+}
+
+@mixin article-header-tablet() {
+  padding: $main-spacing * 1.5 $main-spacing;
+  padding-left: 2%;
+  font-size: 1.7rem;
+  color: #fff;
+  text-align: left;
+  background-color: $primary-green;
+}
+
+@mixin article-text() {
+  padding: $main-spacing;
+  text-align: justify;
+  hyphens: auto;
+}
+
+@mixin article-text-tablet() {
+  padding: $main-spacing;
+  margin: 30vh auto 0 auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-size: 1.3rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+@mixin article-text-contact() {
+  padding: $main-spacing;
+  text-align: left;
+}
+
+@mixin article-text-contact-tablet() {
+  padding: $main-spacing;
+  margin: 15vh 0 0 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-size: 1.3rem;
+  text-align: left;
+}

@@ -1,0 +1,20 @@
+@import "variables";
+
+.footer {
+  width: 100%;
+  padding: $main-spacing;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #fff;
+  line-height: 100%;
+  background-color: $primary-green;
+  &__article__text__par {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) and (min-height: 600px) {
+  .footer {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,161 @@
+@import "variables";
+
+.contact-form {
+  padding: $main-spacing;
+  &__title {
+    padding: $main-spacing;
+    margin: 0 auto;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  &__status-panel {
+    display: none;
+    border: 2px solid $primary-green;
+    padding: $main-spacing;
+    margin: $main-spacing 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    text-align: left;
+    font-size: 1rem;
+    transition: 0.3s;
+
+    &__header {
+      font-weight: 700;
+    }
+
+    &--error {
+      border: 2px solid #f00;
+      color: #f00;
+    }
+  }
+}
+
+@media (min-width: 768px) and (min-height: 600px) {
+  .contact-form {
+    max-width: 720px;
+    padding: 2vh 0;
+    margin: 0 auto;
+    &__title {
+      max-width: 720px;
+      background-color: $primary-green;
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 400;
+    }
+    &__status-panel {
+      background-color: rgba(255, 255, 255, 0.8);
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .contact-form {
+    max-width: 900px;
+    &__title {
+      max-width: 900px;
+    }
+  }
+}
+
+.form {
+  &__input {
+    width: 100%;
+    height: 25px;
+    padding: 0 5px;
+    margin-bottom: 5px;
+    border: 1px solid $primary-gray;
+    font-family: $base-font;
+    font-size: 1rem;
+    color: #000;
+    opacity: 0.7;
+
+    &::placeholder {
+      font-size: 0.8rem;
+      color: $primary-gray;
+    }
+
+    &:focus {
+      color: $primary-green;
+      font-weight: 400;
+      outline: none;
+      border: 2px solid $primary-green;
+      opacity: 1;
+    }
+
+    &-message {
+      height: 250px;
+      padding-top: 5px;
+      resize: none;
+    }
+    &-robo {
+      display: none;
+    }
+
+    &--invalid {
+      border: 2px solid #f00;
+    }
+
+    &__label {
+      font-size: 0.8rem;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    height: 30px;
+    margin-top: $main-spacing;
+    background-color: $primary-green;
+    font-family: $base-font;
+    font-size: 1.1rem;
+    line-height: 30px;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    transition: 0.5s;
+    cursor: pointer;
+    &--busy {
+      pointer-events: none;
+      opacity: 0.3;
+    }
+  }
+}
+
+@media (min-width: 768px) and (min-height: 600px) {
+  .form {
+    &__input {
+      height: 40px;
+      margin-bottom: $main-spacing;
+      font-size: 1.3rem;
+
+      &::placeholder {
+        font-size: 1.1rem;
+        color: $primary-gray;
+      }
+
+      &:focus {
+        font-weight: 700;
+        border: 4px solid $primary-green;
+      }
+
+      &-message {
+        height: 350px;
+        padding-top: 5px;
+        resize: none;
+      }
+      &__label {
+        font-size: 1.1rem;
+      }
+    }
+
+    &__btn {
+      height: 40px;
+      font-size: 1.3rem;
+
+      &:hover {
+        background-color: #fff;
+        color: $primary-green;
+      }
+    }
+  }
+}
