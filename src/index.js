@@ -1,115 +1,59 @@
 import "./scss/style.scss";
 import { logoLettersAnimation } from "./modules/logo-animation.js";
+import {
+  burgerAnimation,
+  burgerAnimationReset,
+} from "./modules/burger-animation.js";
+import { smoothScroll } from "./modules/page-scroll.js";
+import { setPaddingTop } from "./modules/header-handler.js";
+import {
+  menu,
+  hideMenuBarTimeout,
+  hideActiveMenu,
+  menuToggler,
+  scrollMenuBarAction,
+} from "./modules/menu-handler.js";
+
+//animationa
 
 logoLettersAnimation();
+burgerAnimation(true);
 
 // mobile menu handler
-
-const burger = document.querySelector(".menu__burger");
-const burgerLayerTop = document.querySelector(".menu__burger__top");
-const burgerLayerMiddle = document.querySelector(".menu__burger__middle");
-const burgerLayerBottom = document.querySelector(".menu__burger__bottom");
-const menu = document.querySelector(".menu");
-const nav = document.querySelector(".menu__nav");
 const menuLinks = document.querySelectorAll(".menu__nav__link--scroll");
-
-const showMenuBar = () => menu.classList.remove("menu--hide");
-const hideMenuBar = () => menu.classList.add("menu--hide");
-const hideMenuBarTimeout = () => {
-  setTimeout(() => hideMenuBar(), 800);
-};
-const hideActiveMenu = () => {
-  menu.classList.remove("menu--active");
-  nav.classList.remove("menu__nav--active");
-  burgerLayerTop.classList.remove("menu__burger__top--active");
-  burgerLayerMiddle.classList.remove("menu__burger__middle--active");
-  burgerLayerBottom.classList.remove("menu__burger__bottom--active");
-};
-let scrollStart = 0;
-const scrollMenuBarAction = () => {
-  let scrollValue = scrollY;
-  if (window.innerWidth < 768 || window.innerHeight < 768) {
-    if (menu.classList.contains("menu--active")) {
-      hideActiveMenu();
-    }
-    if (scrollValue > scrollStart) {
-      hideMenuBar();
-    } else {
-      showMenuBar();
-    }
-    if (scrollY <= 10) {
-      showMenuBar();
-    }
-    scrollStart = scrollValue <= 0 ? 0 : scrollValue;
-  }
-};
-const smoothScroll = (event) => {
-  event.preventDefault();
-  const targetElement = event.currentTarget.getAttribute("href");
-  let targetPosition =
-    document.querySelector(targetElement).offsetTop - spaceForDesktopHeader;
-
-  const startPosition = window.scrollY;
-  const distance = targetPosition - startPosition;
-
-  const duration = 800;
-  let start = null;
-
-  const step = (timestamp) => {
-    if (!start) start = timestamp;
-    const progress = timestamp - start;
-    // linear
-    window.scrollTo(0, distance * (progress / duration) + startPosition);
-    if (progress < duration) window.requestAnimationFrame(step);
-  };
-  window.requestAnimationFrame(step);
-};
-
-menuLinks.forEach((link) =>
-  link.addEventListener("click", () => {
+for (const el of menuLinks) {
+  el.addEventListener("click", () => {
     smoothScroll(event);
+
     if (window.innerWidth < 768 || window.innerHeight < 768) {
       hideActiveMenu();
       hideMenuBarTimeout();
     }
-  })
-);
-
-burger.addEventListener("click", function () {
+  });
+}
+const burger = document.querySelector(".menu__burger");
+burger.addEventListener("click", () => {
   if (window.innerWidth < 768 || window.innerHeight < 768) {
-    menu.classList.toggle("menu--active");
-    nav.classList.toggle("menu__nav--active");
-    burgerLayerTop.classList.toggle("menu__burger__top--active");
-    burgerLayerMiddle.classList.toggle("menu__burger__middle--active");
-    burgerLayerBottom.classList.toggle("menu__burger__bottom--active");
+    menuToggler();
+    if (menu.classList.contains("menu--active")) {
+      burgerAnimation(false);
+      burgerAnimationReset();
+    } else {
+      burgerAnimation(true);
+    }
   }
 });
 
-["wheel", "touchmove", "keydown"].forEach((event) =>
-  window.addEventListener(event, () => {
+const hideMenuBarEvents = ["wheel", "touchmove", "keydown"];
+for (const el of hideMenuBarEvents) {
+  window.addEventListener(el, () => {
     if (window.innerWidth < 768 || window.innerHeight < 768) {
       scrollMenuBarAction();
     }
-  })
-);
+  });
+}
 
-// tablet/desktop main-site padding top calculator
-let spaceForDesktopHeader = 0;
-
-const spaceForDesktopHeaderCalculator = () => {
-  if (window.innerWidth > 767.9 && window.innerHeight > 599.9) {
-    spaceForDesktopHeader = window.innerHeight * 0.02 + 75 + 10;
-  } else {
-    spaceForDesktopHeader = 0;
-  }
-};
-
-const setPaddingTop = () => {
-  spaceForDesktopHeaderCalculator();
-  document.querySelector(
-    ".main-site__article--products"
-  ).style.paddingTop = `${spaceForDesktopHeader}px`;
-};
+// tablet/desktop main-site padding top
 
 setPaddingTop();
 
