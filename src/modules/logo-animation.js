@@ -1,10 +1,7 @@
-// logo animation
-import { TimelineLite, CSSPlugin } from "gsap/all";
-
-const plugins = [CSSPlugin];
+import { gsap } from "gsap";
 
 export const logoLettersAnimation = () => {
-  const tl = new TimelineLite({ onComplete: logoLettersAnimation });
+  const tl = gsap.timeline({ onComplete: logoLettersAnimation });
   const scale = () => {
     return 0.6 + Math.random();
   };

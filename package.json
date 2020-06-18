@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "webpack-dev-server --config webpack.config.prod.js",
-    "start": "webpack-dev-server --config webpack.config.dev.js",
+    "servprod": "webpack-dev-server --config webpack.config.prod.js",
+    "servdev": "webpack-dev-server --config webpack.config.dev.js",
     "prod": "webpack --config webpack.config.prod.js",
     "dev": "webpack --config webpack.config.dev.js"
   },

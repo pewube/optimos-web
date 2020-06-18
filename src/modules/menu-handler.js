@@ -1,5 +1,6 @@
 import { duration } from "./settings.js";
 
+const burger = document.querySelector(".menu__burger");
 const burgerLayerTop = document.querySelector(".menu__burger__top");
 const burgerLayerMiddle = document.querySelector(".menu__burger__middle");
 const burgerLayerBottom = document.querySelector(".menu__burger__bottom");
@@ -9,6 +10,7 @@ const nav = document.querySelector(".menu__nav");
 export const menuToggler = () => {
   menu.classList.toggle("menu--active");
   nav.classList.toggle("menu__nav--active");
+  burger.classList.toggle("menu__burger--active");
   burgerLayerTop.classList.toggle("menu__burger__top--active");
   burgerLayerMiddle.classList.toggle("menu__burger__middle--active");
   burgerLayerBottom.classList.toggle("menu__burger__bottom--active");

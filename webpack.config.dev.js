@@ -29,7 +29,7 @@ module.exports = {
         loader: "babel-loader",
         options: {
           presets: [
-            ["@babel/preset-env", { useBuiltIns: "entry", corejs: "3.6" }],
+            ["@babel/preset-env", { useBuiltIns: "usage", corejs: "3.6" }],
           ],
           plugins: ["@babel/plugin-proposal-class-properties"],
         },

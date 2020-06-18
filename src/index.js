@@ -1,23 +1,17 @@
 import "./scss/style.scss";
 import { logoLettersAnimation } from "./modules/logo-animation.js";
-import {
-  burgerAnimation,
-  burgerAnimationReset,
-} from "./modules/burger-animation.js";
 import { smoothScroll } from "./modules/page-scroll.js";
 import { setPaddingTop } from "./modules/header-handler.js";
 import {
-  menu,
   hideMenuBarTimeout,
   hideActiveMenu,
   menuToggler,
   scrollMenuBarAction,
 } from "./modules/menu-handler.js";
 
-//animationa
+//animation
 
 logoLettersAnimation();
-burgerAnimation(true);
 
 // mobile menu handler
 const menuLinks = document.querySelectorAll(".menu__nav__link--scroll");
@@ -35,12 +29,6 @@ const burger = document.querySelector(".menu__burger");
 burger.addEventListener("click", () => {
   if (window.innerWidth < 768 || window.innerHeight < 768) {
     menuToggler();
-    if (menu.classList.contains("menu--active")) {
-      burgerAnimation(false);
-      burgerAnimationReset();
-    } else {
-      burgerAnimation(true);
-    }
   }
 });
 

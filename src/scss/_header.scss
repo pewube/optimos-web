@@ -1,4 +1,5 @@
 @import "variables";
+@import "keyframes";
 
 .menu {
   position: fixed;
@@ -46,6 +47,9 @@
     margin-right: 10px;
     cursor: pointer;
 
+    transform-origin: 50% 50%;
+    animation: burger-animation 3s 1s ease infinite;
+
     &__top,
     &__middle,
     &__bottom {
@@ -77,6 +81,10 @@
       &--active {
         transform: rotate(194deg) translate(33px, -3px) scale(0.72, 0.99);
       }
+    }
+    &--active {
+      animation: paused;
+      transform: scaleX(1);
     }
   }
 
