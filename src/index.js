@@ -1,5 +1,6 @@
 import "./scss/style.scss";
 import { logoLettersAnimation } from "./modules/logo-animation.js";
+import { imagesBrightness } from "./modules/images-bright.js";
 import { smoothScroll } from "./modules/page-scroll.js";
 import { setPaddingTop } from "./modules/header-handler.js";
 import {
@@ -32,11 +33,12 @@ burger.addEventListener("click", () => {
   }
 });
 
-const hideMenuBarEvents = ["wheel", "touchmove", "keydown"];
+const hideMenuBarEvents = ["scroll", "wheel", "touchmove", "keydown"];
 for (const el of hideMenuBarEvents) {
   window.addEventListener(el, () => {
     if (window.innerWidth < 768 || window.innerHeight < 768) {
       scrollMenuBarAction();
+      imagesBrightness();
     }
   });
 }
