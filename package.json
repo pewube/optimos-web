@@ -1,5 +1,5 @@
 {
-  "name": "optimos-web",
+  "name": "optimos",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "prod": "webpack --config webpack.config.prod.js",
     "dev": "webpack --config webpack.config.dev.js"
   },
-  "author": "",
+  "author": "pewube",
   "license": "ISC",
   "browserslist": ">0.3%, not dead",
   "devDependencies": {

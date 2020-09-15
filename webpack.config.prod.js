@@ -55,8 +55,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "css/[name]-[contenthash:4].css",
     }),
-    // new CopyPlugin({
-    //   patterns: [{ from: "public" }],
-    // }),
+    new CopyPlugin({
+      patterns: [{ from: "public" }],
+    }),
   ],
 };
